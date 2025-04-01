@@ -59,7 +59,14 @@ for snr_db in snr_values:
     decoded_bits = ['0' if symbol == 1 else '1' for symbol in decoded_symbols]  # Convert back to bits
     
     # Group bits into 8-bit binary values
-    decoded_binary_values = ["".join(decoded_bits[i:i+8]) for i in range(0, len(decoded_bits), 8)]
+    decoded_binary_values = []
+    for i in range(0, len(decoded_bits), 8):
+    # Take 8 bits at a time
+        byte = decoded_bits[i:i+8]
+    # Convert the list of bits to a string
+        byte_str = "".join(byte)
+    # Add to our result list
+        decoded_binary_values.append(byte_str)
     
     # Convert binary values back to pixel values
     decoded_pixels = [int(binary, 2) for binary in decoded_binary_values]
