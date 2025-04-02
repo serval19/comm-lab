@@ -56,7 +56,7 @@ def simulate_pulse_shaping():
     # Load image and convert to binary
     image = cv2.imread(r"D:/cameraman.png", cv2.IMREAD_GRAYSCALE)
     bits = np.unpackbits(image.flatten())
-    symbols = np.where(bits == 0, -1, 1)  # BPSK Mapping
+    symbols = np.where(bits == 0, 1, -1)  # BPSK Mapping
 
     # Define parameters
     Tsym, beta, L, Nsym = 1, 0.3, 4, 8
